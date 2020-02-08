@@ -38,10 +38,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    ViewPager mvpGoods;
-    ArrayList<Integer> mGoodsList;
-    ArrayList<ImageView> mivGoodsList;
-    GoodsAdapter mAdapter;
+
 
     //摄像头的调用参数定义
     public static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
@@ -56,8 +53,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        //viewpage的初始化函数
-        intiViewPage();
 
 
         picture = (ImageView) findViewById(R.id.picture);
@@ -71,28 +66,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    /*
-    * 在进入主界面的时候进行页面的初始化操作函数
-    * 主要由内容运营提供
-    * */
-    private void intiViewPage() {
-        //准备数据源
-        mGoodsList=new ArrayList<>();
-        mGoodsList.add(R.layout.activity_view_one);
-        mGoodsList.add(R.layout.activity_view_two);
 
-        mivGoodsList=new ArrayList<>();
-        for(int i=0;i<mGoodsList.size();i++){
-            ImageView iv=new ImageView(this);
-            iv.setImageResource(mGoodsList.get(i));
-            mivGoodsList.add(iv);
-        }
-        mAdapter=new GoodsAdapter(this,mivGoodsList);
-        mvpGoods= (ViewPager) findViewById(R.id.vpGoods);
-        mvpGoods.setAdapter(mAdapter);
-
-
-    }
 
     @Override
     public void onBackPressed() {
@@ -136,13 +110,9 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
 
             Toast.makeText(this,"拍照识文物，调用算法myOpenCV（）识别文物", Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(MainActivity.this, PicActivity.class);
-            startActivity(intent);
 
         } else if (id == R.id.nav_gallery) {
             Toast.makeText(this,"拍照互动", Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(MainActivity.this, CommunityActivity.class);
-            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 

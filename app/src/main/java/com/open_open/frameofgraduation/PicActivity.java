@@ -1,15 +1,17 @@
 package com.open_open.frameofgraduation;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
-public class PicActivity extends AppCompatActivity {
+public class PicActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("PicActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pic);
         TextView t1 = (TextView)findViewById(R.id.textView3);
